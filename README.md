@@ -1,45 +1,49 @@
 # AWS Toolkit
 
-AWS Toolkit is a collection of utilities designed to simplify the management, monitoring, and troubleshooting of AWS cloud services. 
-This repository contains a series of scripts or tools that help AWS users manage the cloud resources more efficiently.
-
+AWS Toolkit is a collection of utilities designed to simplify the management, monitoring, and troubleshooting of AWS cloud services. This repository contains a series of scripts and tools that help AWS users manage cloud resources more efficiently.
 
 ## Tool List
 
-### EC2 实例连接问题诊断工具 (ec2_troubleshoot.sh)
+- **EC2 Connection Troubleshooter** (`ec2_conn_troubleshoot`)
+  A diagnostic tool that helps identify and resolve EC2 instance connection issues by checking instance status, security group settings, CPU load, and other potential failure points.
 
-这个脚本帮助诊断 EC2 实例的连接问题，通过检查实例运行状态，安全组设置，CPU负载 等方面来确定可能的故障点。
+- **RDS Status Check** (`rds_status_check`)
+  A monitoring tool that automatically checks the status of RDS/Aurora database instances during creation or modification processes. It provides real-time updates and connection details once the database is available.
 
-#### 用法
+- **CloudWatch Agent Installer** (`ec2_install_cwagent`)
+  A script that automates the installation and configuration of the CloudWatch agent on EC2 instances. It supports multiple architectures (x86_64 and ARM64) and operating systems (Amazon Linux, RHEL, Ubuntu, and Debian).
 
-```bash
-./ec2_troubleshoot.sh <Instance ID> <Region> [Profile Name]
-```
+- **RDS Instance Stop Assistant** (`rds_instance_stop`)
+  A set of automation scripts to keep RDS instances in a stopped state beyond the 7-day limit, helping to save costs. Includes options for cron jobs and CloudWatch Events rules.
 
-示例：
-```bash
-./ec2_troubleshoot.sh i-0a90bda0254952ef8 ap-southeast-1 myprofile
-```
+- **S3 Bucket Killer** (`s3-bucket-killer`)
+  A command-line tool for safely deleting AWS S3 buckets, handling various obstacles such as non-empty buckets, versioning, bucket policies, and other configurations that might prevent deletion.
 
-参数说明：
-- `<Instance ID>`: 要诊断的 EC2 实例 ID（必需）
-- `<Region>`: 实例所在的 AWS 区域（必需）
-- `[Profile Name]`: AWS CLI 配置文件名称（可选，默认为 "default"）
-
-#### 依赖项
-
-- AWS CLI
-- jq (用于解析 JSON)
-- nc (netcat，用于网络测试)
-- ping (用于 ICMP 测试)
-
+- **AWS Resource Tracker** [https://github.com/aleck31/aws-resource-tracker]
+  A solution for monitoring and tracking AWS resource creation and deletion operations, including a web interface for viewing historical records.
 
 ## Todo List
 
-- AWS Resource Tracker
 - CloudWatch Alarm Management Tool
 - ECS Service Deployment Assistant
 
+## Usage
+
+Each tool includes its own README file with detailed usage instructions. Generally, the tools follow this pattern:
+
+```bash
+# Make the script executable
+chmod +x script_name.sh
+
+# Run the script with required parameters
+./script_name.sh <required_param> [optional_param]
+```
+
+## Requirements
+
+- AWS CLI installed and configured
+- Appropriate IAM permissions for the operations performed by each tool
+- Additional dependencies as specified in individual tool documentation
 
 ## License
 

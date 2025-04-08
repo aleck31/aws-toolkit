@@ -1,6 +1,6 @@
 #!/bin/bash
 # EC2实例连接问题诊断工具
-# 用法: ./ec2_troubleshoot.sh <实例ID> <区域> [AWS配置文件]
+# 用法: ./ec2_conn_troubleshoot.sh <实例ID> <区域> [AWS配置文件]
 
 set -e
 
